@@ -28,6 +28,7 @@ console.log(p.nextElementSibling)
 console.log(p.previousSibling)
 console.log(p.previousElementSibling)
 
+
 let Div=document.createElement('div')
 Div.className='newClass'
 Div.id='newId'
