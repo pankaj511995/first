@@ -1,4 +1,4 @@
-// let item=document.querySelector('.item-list:nth-child(1)')
+// let item=document.querySelector('.item-list:nth-child(1)')//it not working have to try again
 let item=document.querySelectorAll('.item-list')
 item[1].style.background='green'
 console.log(item[1])
