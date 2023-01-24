@@ -23,12 +23,20 @@ console.log(inpu)
 // sub.style.background='green'
 let addItem=document.getElementsByClassName('item-list')// selecting all list item group
 // let addItem=document.getElementById('add-item')
-
+addItem[2].style.background='yellow'
 console.log(addItem[1])
 for(let i=0;i<addItem.length;i++){
     // addItem[i].innerText=`vary bad ${i}`
     // addItem[i].style.background='blue'
+    if(i==2){
+        continue;
+    }else{
+        addItem[i].style.fontWeight = 'bolder';
+    }
+   
 }
 
 // let odd=document.querySelectorAll('li: nth-child(odd)');
 // let even=document.querySelectorAll('li : nth-child(even)')
+
+
