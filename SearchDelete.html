@@ -57,10 +57,7 @@
             font-size: medium;
             text-align: center;
             border-radius: 8px;
-            padding-right: 30%;
-          
-           
-         
+            padding-right: 20%;
         }
         #error{
             background-color: red;
@@ -69,6 +66,9 @@
         }
         span{
             font-size: x-large;
+            padding-left: 20px;
+        }
+        .lab{
             padding-left: 20px;
         }
     </style>
@@ -89,14 +89,20 @@
             <br>
             <div id="error"></div>
             <hr>
-            <input type="text" class="item" id="item" placeholder="add item">
-            <!-- <label for="search"></label> -->
+            <label for="item" class="lab"><Strong> First  Name: -</Strong></label>
+           
+            <input type="text" class="item" id="item" ><br>
+            <label for="last" class="lab"><Strong>Last  Name: -</Strong></label>
+            <input type="text" class="item" id="last" ><br>
+            <label for="last" class="lab"><Strong>Phon Name: -</Strong></label>
+            <input type="text" class="item" id="phone" >
+            <label for="search"></label>
             <input type="submit" class="submit" value="Submit" id=" submit">
             <div class="addItem" id="addItem">
-                <li class="list">Item 1 <button class="delete" id="delete">X</button> </li>
-                <li class="list"> Item 2 <button class="delete" id="delete">X</button></li>
-                <li class="list"> Item 3  <button class="delete" id="delete">X</button></li>
-                <li class="list"> Item 4<button class="delete" id="delete">X</button></li>
+                <li class="list">Pankaj : Kumar : realme<button class="delete" id="delete">X</button> </li>
+                <li class="list"> Yash : prasad : iphone <button class="delete" id="delete">X</button></li>
+                <li class="list"> Vaibhav : sir : iphone-12 <button class="delete" id="delete">X</button></li>
+                <!-- <li class="list"> Item 4<button class="delete" id="delete">X</button></li> -->
             </div>
         </div>
     </body>

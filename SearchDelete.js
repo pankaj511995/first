@@ -1,24 +1,30 @@
 
 let search=document.querySelector('.submit')
 let error=document.querySelector('#error')
-let deleteBtn=document.getElementById('addItem')
-// let deleteBtn=document.querySelectorALl('.delete')
+// let deleteBtn=document.getElementById('addItem')
+let deleteBtn=document.querySelector('#addItem')
 // let addItem=document.querySelectorAll('.addItem')
- let inputItem=document.getElementById('item')
+ let name1=document.getElementById('item')
+ let last=document.querySelector('#last')
+ let phone=document.querySelector('#phone')
+let inputItem=document.querySelector('#item')
 let addItem=document.getElementById('addItem')
 search.addEventListener('click',addItemElement);
 deleteBtn.addEventListener('click',removeItem)
+let searchItem=document.querySelector('#search-item')
+searchItem.addEventListener('keyup',searching)
 function addItemElement(e){
     e.preventDefault()
    
-    if(inputItem.value==' '){
+    if(name1.value==' ' || last.value==' ' || phone.value==' '){
         error.innerHTML='plese first enter your intem then Submit  '
         // Error.classList.add()
         setTimeout(()=>error.remove(),3000)
     }
     else{
         let li=document.createElement('li')
-        li.appendChild(document.createTextNode(inputItem.value))
+        li.appendChild(document.createTextNode(`${name1.value} :
+         ${last.value} : ${phone.value}`))
         li.className='list'
        
         let deleteB=document.createElement('button')
@@ -28,7 +34,9 @@ function addItemElement(e){
         li.appendChild(deleteB)
 
         addItem.appendChild(li)
-        inputItem.value=' '
+        name1.value=' '
+        last.value=' '
+        phone.value=' '
     }
 }
 function removeItem(e){
@@ -37,4 +45,18 @@ function removeItem(e){
         addItem.removeChild(li)
     // console.log('delete')
     }
+}
+function searching(e){
+    let text=e.target.value.toLowerCase()
+let item=document.getElementsByTagName('li')
+Array.from(item).forEach(function (g){
+let name=g.firstChild.textContent;
+if(name.toLowerCase().indexOf(text) !=-1){
+    g.style.display='block'
+    // console.log('yes')
+}else{
+    g.style.display='none';
+    // console.log('no')
+}
+})
 }
