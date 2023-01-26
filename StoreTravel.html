@@ -88,11 +88,18 @@ let name1=document.getElementById('item')
 function addItem(e){
     e.preventDefault()
 let Object1={
-    email1,
-    name1,
-    phone
+    email : email1.value,
+    name : name1.value,
+    phone : phone.value
 }
    localStorage.setItem(`${email1.value}`, `${JSON.stringify(Object1)}`)
+   let add=document.getElementById('addItem')
+let li=document.createElement('li')
+let obj=document.createTextNode( localStorage.getItem(`${email1.value}`))
+li.appendChild(obj)
+
+  add.appendChild(li)
+
 }
   
     </script>
