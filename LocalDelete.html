@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalStorage </title>
+    <title>LocalDelete </title>
     <style>
         .head1{
             background-color: green;
@@ -24,13 +24,13 @@
             font-size: medium;
             width: 50%;
         }
-        .submit:hover{
+        .submit:hover, .delete:hover{
             background-color: rgba(26, 176, 46, 0.829);
             color: rgb(22, 25, 233);
             cursor: pointer;
             transition: 0.5s ease-in-out;
         }
-        .submit{
+        .submit,.delete{
             font-size: medium;
             text-align: center;
             border-radius: 8px;
@@ -54,17 +54,17 @@
 </head>
 <body>
     <div class="head1">
-        Local Storagae
+        Local Delete
     </div>
     <br><br>
-    class="new-item
+   
  <form  onsubmit="submitItem()" >
         <label for="item">Name</label>
          <input type="text" id="item" class="item"><br><br>
          <label for="email1">Email:</label>
-         <input type="text" class="item" id="email1" value="p@gmail.com" required ><br><br>
+         <input type="text" class="item" id="email1" value="@gmail.com" required ><br><br>
          <label for="input3">Phone :</label>
-        <input type="text" class="item" id="phone" required value="1234">
+        <input type="text" class="item" id="phone" required value="+91-">
     <input type="submit" class="submit" id="submit" value="submit">
        
 </form>
@@ -85,33 +85,60 @@ subm.addEventListener('click',addItem);
 let email1=document.getElementById('email1')
 let phone=document.getElementById('phone')
 let name1=document.getElementById('item')
+let delete1=document.getElementById('addItem')
+delete1.addEventListener('click',removeList);
 
 function addItem(e){
-    e.preventDefault()
-let Object1={
-    email : email1.value,
-    name : name1.value,
-    phone : phone.value
+     e.preventDefault()
+//         let Object1={
+//     email : email1.value,
+//     name : name1.value,
+//     phone : phone.value
+// }
+//         localStorage.setItem(`${email1.value}`, `${JSON.stringify(Object1)}`)
+        localStorage.setItem(`${email1.value}`,`${name1.value}: 
+         ${email1.value} : ${phone.value}`)
+        let add=document.getElementById('addItem')
+        let li=document.createElement('li')
+        let obj=document.createTextNode( localStorage.getItem(`${email1.value}`))
+        li.appendChild(obj)
+        let butten=document.createElement('button')
+        butten.appendChild(document.createTextNode('delete'))
+        butten.className='delete'
+        butten.id='delete'
+        butten.innerText
+        li.appendChild(butten)
+        add.appendChild(li)
 }
-   localStorage.setItem(`${email1.value}`, `${JSON.stringify(Object1)}`)
-   let add=document.getElementById('addItem')
-let li=document.createElement('li')
-let obj=document.createTextNode( localStorage.getItem(`${email1.value}`))
-li.appendChild(obj)
-
-  add.appendChild(li)
+function removeList(e){
+    if(e.target.classList.contains('delete')){
+        let li=e.target.parentElement;
+       let h= li
+       h=h.innerText
+       delete1.removeChild(li)
+        console.log(h)
+        let u=false
+        let count=0
+        let str=''
+        for(let i=0;i<h.length;i++){
+            if(h[i]==':'){
+               u=true
+               count++;     
+            }
+            if(u){
+                if(count==2){
+                    break;
+                }
+                else if(h[i]!=' ' && h[i]!=':'){
+                    str+=h[i]
+                }
+            }
+        }
+        console.log(str)
+      localStorage.removeItem(str)
+        // localStorage.removeItem(`${li.email.value}`)
+    }
 }
-
-
-console.log(localStorage.getItem(`${email1.value}`))
-
-
-// let add=document.getElementById('addItem')
-// let li=document.createElement('li')
-// let obj=document.createTextNode( localStorage.getItem(`${email1.value}`))
-// li.appendChild(obj)
-
-//   add.appendChild(li)
     </script>
 </body>
 </html>
