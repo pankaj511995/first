@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage </title>
+    <style>
+        .head1{
+            background-color: green;
+            padding-left: 50px;
+            font-size: xxx-large;
+            color: white;
+        }
+        .new-item{
+            border-radius: 10px;
+            border-style: ridge;
+            padding-left: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .item{
+            border-radius: 8px;
+            font-size: medium;
+            width: 50%;
+        }
+        .submit:hover{
+            background-color: rgba(26, 176, 46, 0.829);
+            color: rgb(22, 25, 233);
+            cursor: pointer;
+            transition: 0.5s ease-in-out;
+        }
+        .submit{
+            font-size: medium;
+            text-align: center;
+            border-radius: 8px;
+            background-color: rgb(162, 59, 59);
+            color: rgb(231, 223, 208);
+            width: 90px;
+            padding-bottom: 8px;
+        }
+        #warning{
+            background-color: rgb(246, 44, 13);
+            color: rgb(245, 245, 240);
+            text-align: center;
+        }
+        .added-item{
+            text-align: center;
+        background-color: rgb(42, 164, 107);  
+        color: rgb(206, 206, 172);
+        font-size: large;
+          }
+    </style>
+</head>
+<body>
+    <div class="head1">
+        Local Storagae
+    </div>
+    <br><br>
+    class="new-item
+ <form  id="form1"  onsubmit="submitItem(event)" >
+    <label for="item">Name</label>
+   <input type="text" id="item" class="item"><br><br>
+    <label for="email1">Email:</label>
+    <input type="text" class="item" id="email1" value="p@gmail.com" required ><br><br>
+    <label for="input3">Phone :</label>
+    <input type="text" class="item" id="phone" required value="1234">
+    <input type="submit" class="submit" id="submit" value="submit">
+</form>
+
+    <script >
+    //    function submitItem(event){
+    //         var your=event.target.email1.value;
+    //         console.log(your)
+            
+
+    //     } 
+        // not woeking 
+    </script>
+    <script>
+let form=document.querySelector('#form1')
+let subm=document.getElementById('submit')
+subm.addEventListener('click',addItem);
+let email1=document.getElementById('email1')
+let phone=document.getElementById('phone')
+let name1=document.getElementById('item')
+
+function addItem(e){
+    e.preventDefault()
+    // console.log(`${email1}`)
+    console.log(`${name1.value} : ${email1.value} : ${phone.value}`)
+    // console.log(email1)
+    localStorage.setItem(`${email1.value}`,`${name1.value} : ${email1.value} : ${phone.value}`)
+}
+  
+    </script>
+</body>
+</html>
