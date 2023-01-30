@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contaner">
+        <form action="" >
+            <label for="item" class="form-lable">Amount Expense</label>
+            <input type="number" id="item" class="form-control">
+           <br>
+            <label for="dis" class="form-lable">Add Description</label>
+            <input type="text" id="dis" class="form-control"><br>
+            <label for=""> Catagory </label>
+            <select name="" id="option-item" class="form-control" >
+                <option value="movies">movies</option>
+                <option value="oil">oil</option>
+                <option value="traffic">traffic</option>
+                <option value="veg">veg</option>
+                <option value="hotal">hotal</option>
+
+            </select>
+            <label for="submit-item" class="form-label"></label>
+            <input type="submit" id="submit-item" value="Add Expense">
+            
+        </form>
+        <div id="addExpense"></div>
+    </div>
+    <script>
+        
+            let exp=document.querySelector('#item')
+            let disc=document.querySelector('#dis')
+            let cat=document.querySelector('#option-item')
+            let addExp=document.querySelector('#addExpense')
+            let display=[];
+            let submitForm=document.getElementById('submit-item')
+            submitForm.addEventListener('click',addExpense)
+            function addExpense(e){
+                e.preventDefault()
+                let obj={
+                exp: exp.value,
+                disc:disc.value,
+                cat :cat.value
+            }
+            let li=document.createElement('li')
+            let text=document.createTextNode(`${obj.exp} : ${obj.disc} : ${obj.cat}`)
+            console.log(text)
+            li.appendChild(text)
+            console.log(li)
+            let dele=document.createElement('button')
+            dele.innerHTML='Delete Expense'
+            let edit=document.createElement('button')
+            edit.innerHTML='Edit Expense'
+            li.appendChild(dele)
+            li.appendChild(edit)
+            addExp.appendChild(li)
+           
+            localStorage.setItem(`${obj.exp}`,(`${obj.exp} : ${obj.disc} : ${obj.cat}`))
+            dele.onclick=(e)=>{
+                e.preventDefault()
+                localStorage.removeItem(`${obj.exp}`)
+                addExp.removeChild(li)
+            }
+            edit.onclick=(e)=>{
+                e.preventDefault()
+                localStorage.removeItem(`${obj.exp}`)
+                addExp.removeChild(li)
+                exp.value=obj.exp
+                disc.value=obj.disc
+                cat.value=obj.cat
+               
+            }
+           store(li)
+        //    display1()
+        }
+        function store(li){
+            // display.push(name1)
+            addExp.appendChild(li)
+        }
+        // console.log(localStorage.)
+        // function display1(){
+
+        
+        // console.log(display.length)
+        // for(let i=0;i<display;i++){
+        //     // console.log(localStorage.getItem(display[i]))
+        //     addExp.appendChild(localStorage.getItem(display[i]))
+        // }
+    
+    window.addEventListener('Domcontentloaded',display1)
+
+    function display1(e){
+        e.preventDefault()
+        console.log('hi')
+    }
+    </script>
+</body>
+</html>
